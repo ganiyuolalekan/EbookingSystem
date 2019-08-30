@@ -1,0 +1,15 @@
+{% extends "movies/base.html" %}
+
+{% block title %}Pay using PayPal{% endblock %}
+
+{% block content %}
+<section id="main">
+    <div class="movie-catalog">
+        <h1 align="center" class="special-note">Your payment was successful</h1>
+        <p align="center" class="special-note">Your payment has been successfully received.</p>
+        <p align="center" class="special-note">Go see other available movies <a href="{% url 'movies:index' %}">here</a>.</p>
+    </div>
+</section>
+{% endblock %}
+
+<!-- Template for the paypal process payment system -->

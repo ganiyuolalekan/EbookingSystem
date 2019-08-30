@@ -1,0 +1,16 @@
+{% extends "movies/base.html" %}
+
+{% block title %}Pay using PayPal{% endblock %}
+
+{% block content %}
+    <section id="main">
+        <div class="movie-catalog">
+            <h1 align="center" class="special-note" style="color: #003bff">Pay using PayPal</h1>
+            <div style="width: 30%; margin: 0 40%;">
+                {{ form.render }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+<!-- Template for the paypal process payment system -->

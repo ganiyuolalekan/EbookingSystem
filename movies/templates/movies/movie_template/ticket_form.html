@@ -1,0 +1,20 @@
+{% extends 'movies/base.html' %}
+
+{% block content %}
+	<section id="main">
+		<div class="movie-catalog">
+			<h4 align="center" class="special-note">Book ticket to <b style="color: green">{{ movie.movie_name }}</b> here at ${{ movie.movie_ticket_price }} a sit...</h4>
+			<form class="ticket-form" method="post" action="#">
+				{% for form in forms %}
+					<label>{{ form.label }}</label>
+					{{ form }}
+					<br><br>
+				{% endfor %}
+
+				<input type="submit" value="Buy ticket" class="btn btn-success">
+
+				{% csrf_token %}
+			</form>
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'movies/base.html' %}
+
+{% block content %}
+    <section id="main">
+        <div class="main-header">
+            <!-- Reserved for informations to excite users -->
+        </div>
+        <div class="movie-catalog">
+            <div class="movie-detail">
+                <div class="detail-header">
+                    <div class="movie-name movie-pic">
+                        <a href="{% url 'movies:movie_name' movie.movie_name %}">
+                            <img src="{{ movie.movie_img.url }}" height="200px" />
+                        </a>
+                    </div>
+                    <div class="movie-d">
+                        <h3 class="space" style="font-family: cursive; font-size: 110%; ">{{ movie.movie_name }}</h3>
+                        <p>{{ movie.movie_ticket_booked }} ticket booked, {{ movie.movie_ticket_number }} available</p>
+                        <p>venue: <i>"{{ movie.movie_venue }}"</i></p>
+                        <p><b>A Sit Costs ${{ movie.movie_ticket_price }} only!</b></p>
+                        {% if movie.movie_ticket_number == 0 %}
+                            <button class="space btn btn-success disabled"><a class="buy_link">Buy Ticket</a></button>
+                        {% else %}
+                            <button class="space btn btn-success"><a href="{% url 'movies:tickets' movie.movie_name %}" class="buy_link">Buy Ticket</a></button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="movie-description">
+                <h4 style="font-family: cursive">Description:</h4>
+                <div class="decs-container">
+                    {{ movie.movie_description }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

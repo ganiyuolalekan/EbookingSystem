@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}cinemalab.com{% endblock %}</title>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/index.css' %}">
+		<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+        <section id="header">
+			<div class="content">
+				<h4>cinemalab.com</h4>
+			</div>
+            <form method="get" action="{% url 'movies:search' %}" class="search-box">
+				<input class="search-txt" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search">
+				<button class="search-btn loss" type="submit">
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
+		</section>
+        {% block content %}{% endblock %}
+        <script src="{% static 'js/index.js' %}"></script>
+    </body>
+</html>

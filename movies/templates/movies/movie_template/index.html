@@ -1,0 +1,32 @@
+{% extends 'movies/base.html' %}
+
+{% block content %}
+    <section id="main">
+        <div class="main-header">
+            <!-- Reserved for informations to excite users -->
+        </div>
+        <div class="movie-catalog">
+            {% for category_name, category_movies in movies %}
+                <div class="content-header">
+                    <a href="{% url 'movies:category' category_name %}"><h5>{{ category_name }}</h5></a>
+                    <hr width="100%" />
+                </div>
+                <div class="movies">
+                    {% for movie in category_movies %}
+                        <div class="movie">
+                            <div class="movie-name">
+                                <a href="{% url 'movies:movie_name' movie.movie_name %}">
+                                    <img src="{{ movie.movie_img.url }}" width="100%" />
+                                </a>
+                            </div>
+                            <div class="movie-details">
+                                <a href="{% url 'movies:movie_name' movie.movie_name %}"><h5 align="center">{{ movie.movie_name|truncatechars:15|linebreaks }}</h5></a>
+                                <p align="center">Show is on {{ movie.movie_show_date }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
